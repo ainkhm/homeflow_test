@@ -1,10 +1,18 @@
 import { FaBookmark } from 'react-icons/fa';
+import { Placeholder } from './Placeholder';
 
 function PropertyCard({ property }) {
+
+  const { photos, display_address, } = property;
+
   return (
     <div className="border-2 bg-gray-50">
-      <div className="relative">
-        <img src={`https://mr0.homeflow.co.uk/${property.photos[0]}`} alt={property.display_address} />
+      <div className="relative h-[calc(100%_-_40px)]">
+
+      {photos.length 
+          ? <img src={`https://mr0.homeflow.co.uk/${photos[0]}`} alt={display_address} className='rounded-t-lg object-cover h-full w-full' /> 
+          : <Placeholder />
+        }
 
         <button className="absolute top-0 right-2" title="Click to bookmark this property">
           <FaBookmark className="text-yellow-400" size="40" />
